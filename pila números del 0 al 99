@@ -1,0 +1,47 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class PilaConRandom {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        // Solicitar el tamaño máximo de la pila
+        int tam = obtenerTamanoPila(scanner);
+
+        // Crear una pila con el tamaño especificado
+        int[] pila = new int[tam];
+        int top = -1;  // Índice para el elemento superior de la pila
+
+        // Llenar la pila con números aleatorios
+        llenarPilaConAleatorios(pila, random, tam, top);
+
+        // Mostrar la pila
+        mostrarPila(pila, top);
+
+        scanner.close();
+    }
+
+    // Método para obtener el tamaño de la pila del usuario
+    private static int obtenerTamanoPila(Scanner scanner) {
+        System.out.println("Ingresa el tamaño de la pila:");
+        return scanner.nextInt();
+    }
+
+    // Método para llenar la pila con números aleatorios
+    private static void llenarPilaConAleatorios(int[] pila, Random random, int tam, int top) {
+        for (int i = 0; i < tam; i++) {
+            int valorAleatorio = random.nextInt(100);  // Números aleatorios entre 0 y 99
+            pila[++top] = valorAleatorio;
+            System.out.println("Valor agregado a la pila: " + valorAleatorio);
+        }
+    }
+
+    // Método para mostrar el contenido de la pila
+    private static void mostrarPila(int[] pila, int top) {
+        System.out.println("Contenido de la pila (de arriba hacia abajo):");
+        for (int i = top; i >= 0; i--) {
+            System.out.println(pila[i]);
+        }
+    }
+}
